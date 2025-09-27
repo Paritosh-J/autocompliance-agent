@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-harness": "node test/harness.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Paritosh-J/autocompliance-agent#readme",
   "dependencies": {
     "@aws-sdk/client-bedrock-runtime": "^3.896.0",
-    "dotenv": "^17.2.2"
+    "dotenv": "^17.2.2",
+    "cheerio": "^1.0.0-rc.12"
   }
 }
