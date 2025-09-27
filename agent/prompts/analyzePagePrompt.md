@@ -8,7 +8,7 @@ SYSTEM: You are an expert compliance assistant for small businesses.  Given a we
 SCHEMA:
 {
   "url": "<original_url>",
-  "score": <0-100>,                // compliance readiness estimate
+  "score": <0-100>,
   "issues": [
     {
       "id": "issue-1",
@@ -59,6 +59,23 @@ EXPECTED JSON:
     }
   ],
   "notes":"No cookie banner detected; site may be subject to cookie consent depending on region."
+}
+
+### EXAMPLE 2
+INPUT:
+{
+  "url":"https://demo.example/ok",
+  "title":"Compliant Site",
+  "extracted_text":"Privacy policy at /privacy. We use a cookie banner that asks visitors for consent.",
+  "metadata":{"hasPrivacy":true,"hasCookiesBanner":true}
+}
+
+EXPECTED JSON:
+{
+  "url":"https://demo.example/ok",
+  "score": 92,
+  "issues":[],
+  "notes":"Basic privacy and cookie notice present."
 }
 
 END_PROMPT

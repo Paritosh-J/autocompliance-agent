@@ -7,8 +7,17 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const REGION = process.env.AWS_REGION || "us-west-2";
+const BEDROCK_MODEL_ID = process.env.BEDROCK_MODEL_ID || ""; // set in .env
+
+if (!BEDROCK_MODEL_ID) {
+  console.warn(
+    "Warning: BEDROCK_MODEL_ID not set. Set it in .env before calling live Bedrock."
+  );
+}
+
 const client = new BedrockRuntimeClient({
-  region: process.env.AWS_REGION || "us-west-2",
+  region: REGION,
 });
 
 // load prompt templalte
@@ -17,6 +26,11 @@ const promptTemplate = fs.readFileSync(
   "utf8"
 );
 
+/**
+ * analyzePage - call Bedrock LLM with the prompt and return parsed JSON
+ * @param {Object} input - { url, title, extracted_text, metadata }
+ * @returns {Object} parsed JSON per schema in prompt
+ */
 export async function analyzePage({ url, title, extractedText, metadata }) {
   const promptInput = `
         ${promptTemplate}
@@ -41,6 +55,7 @@ export async function analyzePage({ url, title, extractedText, metadata }) {
     }),
   });
 
+  // send to Bedrock
   const res = await client.send(command);
 
   // parse string response from bedrock runtime
