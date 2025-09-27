@@ -1,0 +1,28 @@
+{
+  "name": "autocompliance-agent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paritosh-J/autocompliance-agent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Paritosh-J/autocompliance-agent/issues"
+  },
+  "homepage": "https://github.com/Paritosh-J/autocompliance-agent#readme",
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.896.0",
+    "dotenv": "^17.2.2"
+  }
+}
